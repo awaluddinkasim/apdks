@@ -46,6 +46,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Text(
                           "Kanker serviks adalah kanker yang tumbuh pada sel-sel di leher rahim. Kanker ini umumnya berkembang perlahan dan baru menunjukkan gejala ketika sudah memasuki stadium lanjut. Oleh sebab itu, penting untuk mendeteksi kanker serviks sejak dini sebelum timbul masalah serius.",
+                          textAlign: TextAlign.justify,
                         ),
                         SizedBox(
                           height: 20,
@@ -62,6 +63,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Text(
                           "Kanker serviks terjadi ketika sel-sel yang sehat mengalami perubahan atau mutasi. Mutasi ini menyebabkan sel-sel tersebut tumbuh tidak normal dan tidak terkendali sehingga membentuk sel kanker. Belum diketahui apa yang menyebabkan perubahan pada gen tersebut. Namun, kondisi ini diketahui terkait dengan infeksi HPV.",
+                          textAlign: TextAlign.justify,
                         ),
                         SizedBox(
                           height: 20,
@@ -78,6 +80,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Text(
                           "Pengobatan kanker serviks tergantung pada stadium kanker yang dialami pasien dan kondisi kesehatannya. Tindakan yang dilakukan dokter meliputi kemoterapi, radioterapi, bedah, atau kombinasi dari ketiganya. Peluang penderita kanker serviks untuk sembuh akan lebih besar jika kondisi ini terdeteksi sejak dini. Oleh sebab itu, setiap wanita disarankan untuk menjalani skrining kanker serviks secara berkala sejak usia 21 tahun atau sejak menikah. Selain itu, pencegahan infeksi HPV yang dapat memicu kanker ini juga dapat dilakukan dengan vaksin sejak usia 10 tahun.",
+                          textAlign: TextAlign.justify,
                         ),
                       ],
                     ),
