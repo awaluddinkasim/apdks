@@ -106,9 +106,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
           child: SizedBox(
             height: 180,
             width: 180,
-            child: ClipOval(
-              child: SvgPicture.asset("assets/kosong.svg"),
-            ),
+            child: SvgPicture.asset("assets/kosong.svg"),
           ),
         ),
         const SizedBox(
