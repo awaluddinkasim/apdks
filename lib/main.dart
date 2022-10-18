@@ -25,8 +25,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    precacheImage(Image.asset("assets/kanker-serviks.png").image, context);
-    precacheImage(Image.asset("assets/ribbon.png").image, context);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

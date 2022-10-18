@@ -6,6 +6,8 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    precacheImage(Image.asset("assets/ribbon.png").image, context);
+
     return Scaffold(
       body: SafeArea(
         child: Column(

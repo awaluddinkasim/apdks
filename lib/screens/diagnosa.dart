@@ -5,11 +5,13 @@ import 'package:apdks/screens/result.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class TestScreen extends StatelessWidget {
-  const TestScreen({super.key});
+class DiagnosaScreen extends StatelessWidget {
+  const DiagnosaScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    precacheImage(Image.asset("assets/kanker-serviks.png").image, context);
+
     final resultProvider = Provider.of<Result>(context);
 
     return Scaffold(
@@ -45,7 +47,7 @@ class TestScreen extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => const KonsultasiScreen()),
                       );
                     },
-                    child: const Text("Mulai Tes"),
+                    child: const Text("Mulai Diagnosa"),
                   ),
                   if (resultProvider.hasil.isNotEmpty)
                     ElevatedButton(

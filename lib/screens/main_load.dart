@@ -45,6 +45,8 @@ class _InitAppState extends State<InitApp> {
 
   @override
   Widget build(BuildContext context) {
+    precacheImage(Image.asset("assets/ribbon.png").image, context);
+
     final provider = Provider.of<Auth>(context);
 
     if (provider.authenticated != null && provider.authenticated == true) {

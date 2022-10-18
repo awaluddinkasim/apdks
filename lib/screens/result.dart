@@ -1,7 +1,7 @@
 import 'package:apdks/nav_drawer.dart';
 import 'package:apdks/providers/auth.dart';
 import 'package:apdks/providers/result.dart';
-import 'package:apdks/screens/test.dart';
+import 'package:apdks/screens/diagnosa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -85,7 +85,7 @@ class ResultScreen extends StatelessWidget {
                   ? _tidakTerindikasi(resultProvider)
                   : _terindikasi(context, resultProvider)
             else
-              _belumKonsultasi(context)
+              _belumDiagnosa(context)
           else
             _loading()
         ],
@@ -93,14 +93,14 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Card _belumKonsultasi(BuildContext context) {
+  Card _belumDiagnosa(BuildContext context) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
         child: Column(
           children: [
             const Text(
-              "Anda belum mengambil tes gejala",
+              "Anda belum melakukan diagnosa gejala",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
@@ -114,7 +114,7 @@ class ResultScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TestScreen(),
+                    builder: (context) => const DiagnosaScreen(),
                   ),
                 );
               },

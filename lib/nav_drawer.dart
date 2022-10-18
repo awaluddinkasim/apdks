@@ -1,9 +1,10 @@
 import 'package:apdks/providers/auth.dart';
+import 'package:apdks/screens/dokter.dart';
 import 'package:apdks/screens/home.dart';
 import 'package:apdks/screens/login.dart';
 import 'package:apdks/screens/profil.dart';
 import 'package:apdks/screens/result.dart';
-import 'package:apdks/screens/test.dart';
+import 'package:apdks/screens/diagnosa.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -82,13 +83,13 @@ class DrawerWidget extends StatelessWidget {
             ),
             _drawerItem(
               icon: CupertinoIcons.doc_checkmark_fill,
-              text: "Konsultasi",
+              text: "Diagnosa",
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TestScreen(),
+                    builder: (context) => const DiagnosaScreen(),
                   ),
                   (route) => false,
                 );
@@ -96,13 +97,27 @@ class DrawerWidget extends StatelessWidget {
             ),
             _drawerItem(
               icon: Icons.file_copy,
-              text: "Hasil Tes",
+              text: "Hasil Diagnosa",
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const ResultScreen(),
+                  ),
+                  (route) => false,
+                );
+              },
+            ),
+            _drawerItem(
+              icon: Icons.local_hospital,
+              text: "Dokter",
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DoctorScreen(),
                   ),
                   (route) => false,
                 );
