@@ -1,6 +1,6 @@
 import 'package:apdks/nav_drawer.dart';
 import 'package:apdks/providers/result.dart';
-import 'package:apdks/screens/konsultasi.dart';
+import 'package:apdks/screens/diagnosa-awal.dart';
 import 'package:apdks/screens/result.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +44,7 @@ class DiagnosaScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const KonsultasiScreen()),
+                        MaterialPageRoute(builder: (context) => const DiagnosaAwalScreen()),
                       );
                     },
                     child: const Text("Mulai Diagnosa"),

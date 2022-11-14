@@ -2,6 +2,7 @@
 
 import 'package:apdks/providers/auth.dart';
 import 'package:apdks/providers/result.dart';
+import 'package:apdks/screens/diagnosa-lanjut.dart';
 import 'package:apdks/screens/loading.dart';
 import 'package:apdks/screens/result.dart';
 import 'package:apdks/services/dio.dart';
@@ -9,14 +10,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class KonsultasiScreen extends StatefulWidget {
-  const KonsultasiScreen({super.key});
+class DiagnosaAwalScreen extends StatefulWidget {
+  const DiagnosaAwalScreen({super.key});
 
   @override
-  State<KonsultasiScreen> createState() => _KonsultasiScreenState();
+  State<DiagnosaAwalScreen> createState() => _DiagnosaAwalScreenState();
 }
 
-class _KonsultasiScreenState extends State<KonsultasiScreen> {
+class _DiagnosaAwalScreenState extends State<DiagnosaAwalScreen> {
   bool _isLoading = true;
   bool _calculating = false;
   int _index = 0;
@@ -34,7 +35,7 @@ class _KonsultasiScreenState extends State<KonsultasiScreen> {
   Future<void> fetchGejala(BuildContext context) async {
     final provider = Provider.of<Auth>(context, listen: false);
 
-    Response response = await dio(token: provider.token).get("gejala");
+    Response response = await dio(token: provider.token).get("gejala-utama");
 
     if (response.statusCode == 200) {
       _gejala = response.data['daftarGejala'];
@@ -70,17 +71,25 @@ class _KonsultasiScreenState extends State<KonsultasiScreen> {
     data = {"keluhan": answers};
 
     try {
-      Response response = await dio(token: authProvider.token).post('konsultasi', data: data);
+      Response response = await dio(token: authProvider.token).post('diagnosa', data: data);
 
       if (response.statusCode == 200) {
-        resultProvider.updateHasil(response.data['hasil']);
-
-        navigator.pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (context) => const ResultScreen(),
-          ),
-          (route) => false,
-        );
+        if (response.data['hasil'] != null) {
+          resultProvider.updateHasil(response.data['hasil']);
+          navigator.pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const ResultScreen(),
+            ),
+            (route) => false,
+          );
+        } else {
+          navigator.pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const DiagnosaLanjutScreen(),
+            ),
+            (route) => false,
+          );
+        }
       }
     } on DioError catch (e) {
       print(e.response!.data['message']);
@@ -93,9 +102,17 @@ class _KonsultasiScreenState extends State<KonsultasiScreen> {
       body: SafeArea(
         child: _isLoading
             ? LoadingScreen(
-                text: _calculating ? "Sedang melakukan perhitungan, harap menunggu..." : "Silahkan tunggu...",
+                text: _calculating ? "Sedang mengirim data, harap menunggu..." : "Silahkan tunggu...",
               )
-            : _gejalaBuilder(),
+            : _gejala.isNotEmpty
+                ? _gejalaBuilder()
+                : Column(
+                    children: const [
+                      Center(
+                        child: Text("Tidak ada data gejala"),
+                      ),
+                    ],
+                  ),
       ),
     );
   }
